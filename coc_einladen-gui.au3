@@ -25,9 +25,9 @@ $red=0xFF0000
 $fontcolor=$white
 $guiWidth=328
 $guiHeight=500
-$windowWidth=898
-$windowHeight=535
-$dragstart=320	;Height from top to down in pixels where the bot starts dragging to the next player
+$windowWidth=1280
+$windowHeight=760
+$dragstart=500	;Height from top to down in pixels where the bot starts dragging to the next player
 $lastMousePos=MouseGetPos()
 $filepath = "config.txt"					;Read the config file
 $posConfigFilepath="PosConfig.txt"
@@ -150,7 +150,15 @@ Func main()
 				if Not @error Then
 					$gotWindowHandle = True
 					Global $lastMousePos=MouseGetPos()															;Check that the LDPlayer toolbar is closed
+					Local $lastWinWidth=WinGetPos($hwnd)[2], $lastWinHeight=WinGetPos($hwnd)[3]
 					WinActivate($hwnd)
+					MouseClick("primary", WinGetPos($hwnd)[2]*1253/1280, WinGetPos($hwnd)[3]*26/760, 1, 0)
+					Sleep(1)
+					While ($lastWinWidth<WinGetPos($hwnd)[2])
+						WinActivate($hwnd)
+						MouseClick("primary", WinGetPos($hwnd)[2]*1253/1280, WinGetPos($hwnd)[3]*26/760, 1, 0)
+						Sleep(1)
+					WEnd
 				MouseMove($lastMousePos[0], $lastMousePos[1], 0)
 				EndIf
 		Until $profileNameLine2<>""
