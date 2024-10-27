@@ -35,7 +35,7 @@ $gotWindowHandle = false
 $hwnd=Null
 If Not FileExists($filepath) Then
 				$config = FileOpen($filepath, 2)
-				FileWrite($filepath, 0&@CRLF&"LD Player Profilename"&@CRLF&88)
+				FileWrite($filepath, 0&@CRLF&"Clash of Clans"&@CRLF&88)
 EndIf
 $firstLine1 = FileReadLine($filepath, 1)
 $profileNameLine2=FileReadLine($filepath, 2)
